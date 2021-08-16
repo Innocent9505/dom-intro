@@ -6,10 +6,14 @@ const billTotal = document.querySelector(".billTotal");
 //get a reference to the billString
 const billString = document.querySelector(".billString");
 
+const billStringElement = document.querySelector(".billString");
+
+const billTotalElement = document.querySelector(".billTotal");
+
+
 //link the function to a click event on the calculate button
-calculateBtn.addEventListener("click", function(){
-    calculateBtn.innerHTML = "calculateBtnClicked"
-});
+calculateBtn.addEventListener("click", calculateBtnClicked) 
+ 
 function calculateBtnClicked(){
     // get the string entered in the textArea
     var billString = billStringElement.value;
@@ -31,12 +35,10 @@ function calculateBtnClicked(){
     //round to two decimals
     var roundedBillTotal = billTotal.toFixed(2);
     billTotalElement.innerHTML = roundedBillTotal;
-};
-
-function calculateBtnClicked(){
-    // get the string entered in the textArea
-    var billString = billStringField.value;   
-    //round to two decimals
-    var roundedBillTotal = totalPhoneBill(billString);
-    billTotalElement.innerHTML = roundedBillTotal;
+    if (billTotal >= 30){
+        billTotalElement.classList.add("danger")
+    }
+    else if (billTotal >= 20){
+        billTotalElement.classList.add("warning")
+    }
 };
